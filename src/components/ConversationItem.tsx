@@ -1,35 +1,48 @@
-import type {ConversationResponse} from "../models/Conversation.ts";
+import type { ConversationResponse } from "../models/Conversation.ts";
 
 type Props = {
     conversation: ConversationResponse;
-    onClick?: () => void;
+    active?: boolean;
+    onSelect?: () => void;
+};
+
+function getInitials(name: string): string {
+    return name
+        .split(" ")
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((word) => word[0]?.toUpperCase())
+        .join("");
 }
 
-function ConversationList({ conversation, onClick }: Props) {
+function ConversationItem({ conversation, active, onSelect }: Props) {
     return (
-        <a
-            href="#"
-            className="list-group-item list-group-item-action"
-            onClick={onClick}
+        <button
+            className={`conversation-item ${active ? "conversation-item-active" : ""}`}
+            onClick={onSelect}
         >
-            <div className="d-flex w-100 justify-content-between">
+            <span className="conversation-avatar">
+                {getInitials(conversation.conversationName)}
+            </span>
 
-                <h5 className="mb-1">
-                    {conversation.conversationName}
-                </h5>
-
-                <small className="text-body-secondary">
-                    {conversation.updatedAt ?? ""}
-                </small>
-
-            </div>
-
-            <p className="mb-1">
-                {conversation.message}
-            </p>
-
-        </a>
-    )
+            <span className="conversation-item-content">
+                <span className="conversation-item-top">
+                    <span className="conversation-item-name">{conversation.conversationName}</span>
+                    {conversation.updatedAt && (
+                        <span className="conversation-item-time">
+                            {new Date(conversation.updatedAt).toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                            })}
+                        </span>
+                    )}
+                </span>
+                <span className="conversation-item-preview">
+                    {conversation.message || "Aucun message"}
+                </span>
+            </span>
+        </button>
+    );
 }
 
-export default ConversationList
+export default ConversationItem;

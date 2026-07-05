@@ -1,0 +1,129 @@
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #14171f;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-status {
+    text-align: center;
+    color: #8a8f9c;
+    font-size: 13px;
+}
+
+.chat-bubble-row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chat-bubble-row.own {
+    justify-content: flex-end;
+}
+
+.chat-bubble {
+    max-width: 60%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #f5f3ee;
+}
+
+.chat-bubble-other {
+    background: #1c2030;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-bubble-own {
+    background: #c0392b;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bubble-sender {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e74c3c;
+    margin-bottom: 2px;
+}
+
+.chat-bubble p {
+    margin: 0;
+    color: inherit;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.chat-bubble-time {
+    display: block;
+    font-size: 10px;
+    color: inherit;
+    opacity: 0.7;
+    margin-top: 4px;
+    text-align: right;
+}
+
+/* Barre d'envoi : plus grosse, arrondie, ancrée en bas */
+
+.chat-input-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #1c2030;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0; /* ne se compresse jamais, reste toujours visible en bas */
+}
+
+.chat-input-bar textarea {
+    flex: 1;
+    resize: none;
+    background: #14171f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px; /* bien plus arrondi qu'avant (10px -> 24px) */
+    padding: 16px 22px; /* plus généreux (12px/14px -> 16px/22px) */
+    color: #f5f3ee;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    outline: none;
+    max-height: 140px;
+    min-height: 52px;
+    line-height: 1.4;
+    transition: border-color 0.15s ease;
+}
+
+.chat-input-bar textarea:focus {
+    border-color: #c0392b;
+}
+
+.chat-input-bar button {
+    background: #c0392b;
+    color: #f5f3ee;
+    font-weight: 600;
+    border: none;
+    border-radius: 24px; /* arrondi assorti au champ */
+    padding: 0 28px;
+    height: 52px; /* même hauteur que le textarea au repos */
+    font-size: 15px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, background 0.15s ease;
+    flex-shrink: 0;
+}
+
+.chat-input-bar button:hover:not(:disabled) {
+    background: #a93226;
+}
+
+.chat-input-bar button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}

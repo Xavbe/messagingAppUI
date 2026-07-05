@@ -3,11 +3,13 @@ import LoginPage from "./pages/LoginPage";
 import ChatPage from "./pages/ConversationsPages.tsx";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import type {JSX} from "react";
+import RegisterPage from "./pages/RegisterPage.tsx";
 
 function AppRoutes() {
   return (
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
         <Route
             path="/chat"

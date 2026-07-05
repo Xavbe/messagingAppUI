@@ -7,7 +7,7 @@ export class AuthenticationService {
     private readonly apiURl = "http://localhost:8080";
 
     async login(request: AuthentificationRequest): Promise<void> {
-        console.log("➡️ LOGIN REQUEST SENT:", request);
+        console.log("LOGIN REQUEST SENT:", request);
         const response = await fetch(`${this.apiURl}/login`, {
             method: "POST",
             credentials: "include",
@@ -16,7 +16,7 @@ export class AuthenticationService {
             },
             body: JSON.stringify(request),
         });
-        console.log("➡️ LOGIN Receive:", request);
+        console.log("LOGIN Receive:", request);
         if (!response.ok) {
             throw new Error(response.statusText);
         }
