@@ -4,7 +4,7 @@ export interface AuthentificationRequest {
 }
 
 export class AuthenticationService {
-    private readonly apiURl = "http://localhost:8080";
+    private readonly apiURl = import.meta.env.VITE_API_URL;
 
     async login(request: AuthentificationRequest): Promise<void> {
         console.log("LOGIN REQUEST SENT:", request);

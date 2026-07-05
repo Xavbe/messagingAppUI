@@ -8,7 +8,7 @@ import { useAuth } from "../contexts/AuthContext";
 export default function ConversationPage() {
     const [selectedConvId, setSelectedConvId] = useState<string | null>(null);
     const { username } = useAuth();
-    console.log("Username connecté:", username);
+    if (!username) return null;if (!username) return null;
 
     return (
         <div className="conversation-page">

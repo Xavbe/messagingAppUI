@@ -22,7 +22,7 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
-            await authService.register({ username, email, password });
+            await authService.register({ username, password });
             setAuthenticated(true);
             setAuthUsername(username);
             navigate("/chat");

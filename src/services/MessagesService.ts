@@ -2,7 +2,7 @@ import type { MessageResponse } from "../models/MessageResponse.ts";
 import type { MessagesResponse } from "../models/MessagesResponse.ts";
 
 export class MessageService {
-    private readonly apiUrl = "http://localhost:8080";
+    private readonly apiUrl = import.meta.env.VITE_API_URL;
 
     async getMessages(conversationId: string, before?: string, limit = 30): Promise<MessageResponse[]> {
         const params = new URLSearchParams({limit: String(limit)});
