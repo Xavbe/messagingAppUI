@@ -16,7 +16,6 @@ export default function ChatWindow({ conversationId, currentUsername }: Props) {
     const bottomRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        setLoading(true);
         messageService
             .getMessages(conversationId)
             .then((msgs) => setMessages(msgs.reverse()))

@@ -1,5 +1,6 @@
 import { Client, type IMessage } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
+import type { MessageResponse } from "../models/MessageResponse.ts";
 
 export class WebSocketService {
     private client: Client;
@@ -22,7 +23,7 @@ export class WebSocketService {
         this.client.deactivate();
     }
 
-    subscribeToConversation(conversationId: string, onMessage: (msg: any) => void) {
+    subscribeToConversation(conversationId: string, onMessage: (msg: MessageResponse) => void) {
         return this.client.subscribe(
             `/topic/conversations/${conversationId}/messages`,
             (message: IMessage) => {
