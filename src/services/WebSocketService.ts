@@ -5,8 +5,10 @@ export class WebSocketService {
     private client: Client;
 
     constructor() {
+        const apiUrl = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+
         this.client = new Client({
-            webSocketFactory: () => new SockJS(import.meta.env.VITE_API_URL + "ws"),
+            webSocketFactory: () => new SockJS(`${apiUrl}/ws`),
             reconnectDelay: 5000,
         });
     }

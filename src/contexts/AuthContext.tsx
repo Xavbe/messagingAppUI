@@ -17,7 +17,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:8080/me", {
+        fetch("/api/me", {
             credentials: "include"
         })
             .then(async (res) => {

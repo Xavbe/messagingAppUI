@@ -4,7 +4,7 @@ export interface AuthentificationRequest {
 }
 
 export class AuthenticationService {
-    private readonly apiURl = import.meta.env.VITE_API_URL;
+    private readonly apiURl = "/api"
 
     async login(request: AuthentificationRequest): Promise<void> {
         console.log("LOGIN REQUEST SENT:", request);

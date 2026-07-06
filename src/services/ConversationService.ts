@@ -1,7 +1,7 @@
 import type {ConversationResponse} from "../models/Conversation.ts";
 
 export class ConversationService {
-    private readonly apiUrl: string = import.meta.env.VITE_API_URL;
+    private readonly apiUrl: string = "/api";
 
     async getConversations(): Promise<ConversationResponse[]> {
         const response = await fetch(
