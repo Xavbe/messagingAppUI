@@ -8,13 +8,14 @@ import { useAuth } from "../contexts/AuthContext";
 export default function ConversationPage() {
     const [selectedConvId, setSelectedConvId] = useState<string | null>(null);
     const { username } = useAuth();
-    if (!username) return null;if (!username) return null;
+    if (!username) return null;
 
     return (
         <div className="conversation-page">
             <ConversationList
                 onSelectConversation={setSelectedConvId}
                 selectedConvId={selectedConvId}
+                username={username}
             />
             <main className="conversation-main">
                 {selectedConvId ? (

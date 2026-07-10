@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { AuthenticationService } from "../services";
+import { logger } from "../services/logger.ts";
 import "../style/LoginPage.css";
 
 const authService = new AuthenticationService();
@@ -22,13 +23,13 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
-            await authService.register({ username, password });
+            await authService.register({ username, email, password });
             setAuthenticated(true);
             setAuthUsername(username);
             navigate("/chat");
         } catch (err) {
             setError("Impossible de créer le compte. Le nom d'utilisateur ou l'email est peut-être déjà utilisé.");
-            console.error(err);
+            logger.error("Registration failed", err);
         } finally {
             setLoading(false);
         }

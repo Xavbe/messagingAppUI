@@ -1,13 +1,19 @@
+import { logger } from "./logger.ts";
+
 export interface AuthentificationRequest {
     username: string
     password: string
+}
+
+export interface RegistrationRequest extends AuthentificationRequest {
+    email: string
 }
 
 export class AuthenticationService {
     private readonly apiURl = "/api"
 
     async login(request: AuthentificationRequest): Promise<void> {
-        console.log("LOGIN REQUEST SENT:", request);
+        logger.debug("Login request sent");
         const response = await fetch(`${this.apiURl}/login`, {
             method: "POST",
             credentials: "include",
@@ -16,13 +22,13 @@ export class AuthenticationService {
             },
             body: JSON.stringify(request),
         });
-        console.log("LOGIN Receive:", request);
+        logger.debug("Login response received", response.status);
         if (!response.ok) {
             throw new Error(response.statusText);
         }
     }
 
-    async register(request: AuthentificationRequest): Promise<void> {
+    async register(request: RegistrationRequest): Promise<void> {
         const response = await fetch(`${this.apiURl}/register`, {
             method: "POST",
             credentials: "include",

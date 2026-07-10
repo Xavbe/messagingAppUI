@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import { webSocketService } from "../services/WebSocketService";
 import { messageService } from "../services/MessagesService.ts";
+import { logger } from "../services/logger.ts";
 import {type MessageResponse} from "../models/MessageResponse.ts";
 import "../style/ChatWindows.css";
 
@@ -19,7 +20,7 @@ export default function ChatWindow({ conversationId, currentUsername }: Props) {
         messageService
             .getMessages(conversationId)
             .then((msgs) => setMessages(msgs.reverse()))
-            .catch((err) => console.error(err))
+            .catch((err) => logger.error("Failed to load messages", err))
             .finally(() => setLoading(false));
 
         webSocketService.connect(() => {
@@ -54,7 +55,7 @@ export default function ChatWindow({ conversationId, currentUsername }: Props) {
 
             {}
             <div className="chat-messages">
-                {loading && <p className="chat-status">Chargement des messages...</p>}
+                {loading && <p className="chat-status">Messages loading</p>}
 
                 {!loading &&
                     messages.map((m) => {
@@ -80,7 +81,7 @@ export default function ChatWindow({ conversationId, currentUsername }: Props) {
             {}
             <div className="chat-input-bar">
                 <textarea
-                    placeholder="Écris ton message..."
+                    placeholder="Write your message"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     onKeyDown={handleKeyDown}

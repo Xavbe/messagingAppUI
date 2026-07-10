@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { AuthenticationService } from "../services";
+import { logger } from "../services/logger.ts";
 import "../style/LoginPage.css";
 
 const authService = new AuthenticationService();
@@ -27,7 +28,7 @@ export default function LoginPage() {
             navigate("/chat");
         } catch (err) {
             setError("Username or password is incorrect");
-            console.error(err);
+            logger.error("Login failed", err);
         } finally {
             setLoading(false);
         }

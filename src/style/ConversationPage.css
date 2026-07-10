@@ -17,6 +17,9 @@
 .conversation-sidebar-header {
     padding: 24px 20px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .conversation-sidebar-header h2 {
@@ -24,6 +27,96 @@
     color: #f5f3ee;
     font-size: 18px;
     margin: 0;
+}
+
+.conversation-sidebar-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.profile-avatar-link {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d92630, rgba(255, 23, 13, 0.48));
+    color: #14171f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.profile-avatar-link:hover {
+    box-shadow: 0 0 0 3px rgba(217, 38, 48, 0.18);
+}
+
+.add-conversation-button {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(217, 38, 48, 0.14);
+    color: #f5f3ee;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-conversation-button:hover {
+    background: rgba(217, 38, 48, 0.22);
+}
+
+.add-conversation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.add-conversation-form input {
+    width: 100%;
+    box-sizing: border-box;
+    background: #14171f;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f5f3ee;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.add-conversation-form input::placeholder {
+    color: #8a8f9c;
+}
+
+.add-conversation-error {
+    margin: 0;
+    color: #ff8a80;
+    font-size: 12px;
+}
+
+.add-conversation-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.add-conversation-actions button {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 9px 10px;
+    cursor: pointer;
+}
+
+.add-conversation-actions button[type="button"] {
+    background: transparent;
+    color: #b8bcc4;
+}
+
+.add-conversation-actions button[type="submit"] {
+    background: #d92630;
+    color: #f5f3ee;
 }
 
 .conversation-sidebar-list {

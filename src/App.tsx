@@ -4,6 +4,7 @@ import ChatPage from "./pages/ConversationsPages.tsx";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import type {JSX} from "react";
 import RegisterPage from "./pages/RegisterPage.tsx";
+import ProfilePage from "./pages/ProfilPage.tsx";
 
 function AppRoutes() {
   return (
@@ -16,6 +17,14 @@ function AppRoutes() {
             element={
               <ProtectedRoute>
                 <ChatPage />
+              </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
               </ProtectedRoute>
             }
         />

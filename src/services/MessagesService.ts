@@ -18,7 +18,7 @@ export class MessageService {
         }
 
         const data: MessagesResponse = await response.json();
-        return data.messages; // le vrai tableau est dans data.messages, pas la racine
+        return data.messages;
     }
 }
 
